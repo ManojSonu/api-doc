@@ -43,6 +43,23 @@ axios(config)
     "requestUid": "89aec8e0-d8bb-4b56-bf85-b4986b0b2fd7"
 }
 ``` 
+###Request Information 
+|Category|Value|
+|--------|-----|
+|Http Request|`POST`|
+|URL|http://127.0.0.1:2000/api/v2/job|
+
+###Headers
+|Header|Values|
+|--------|-----|
+|Content-Type|application/json|
+|tenantname|BCA| 
+|streamid|01|
+
+###CallBackURL
+|callbackurl|url|
+|--------|-----|
+|callbackURL|http://127.0.0.1:5000/test|
 
 ##Job Results api Request
 
@@ -83,6 +100,9 @@ axios(config)
   console.log(error);
 });
 ```
+
+
+
 >This is the response we should get
 
 
@@ -153,3 +173,21 @@ axios(config)
     }
 ]
 ```
+###Request Information 
+|Category|Value|
+|--------|-----|
+|Http Request|`POST`|
+|URL|http://127.0.0.1:2000/api/v2/results|
+
+###Headers
+|Header|Values|
+|--------|-----|
+|Content-Type|application/json| 
+|Jobid|89aec8e0-d8bb-4b56-bf85-b4986b0b2fd7|
+|tenantname|BCA|
+|streamid|01|
+
+###CallBackURL
+|callbackurl|url|
+|--------|-----|
+|callbackURL|http://127.0.0.1:5000/test|
