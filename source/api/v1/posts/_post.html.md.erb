@@ -1,6 +1,49 @@
 #Post Module  
 
-##Job api Request 
+##Job api Request
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n  \"callbackURL\": \"http://127.0.0.1:5000/test\",\n  \"images\": [\n    {\n      \"imageid\": \"264dbcf6-163b-47c2-8665-d93e46f65sss\",\n      \"image\": \"base64string\",\n      \"imageuri\":  \"https://stsmartsolwebclientnopro.blob.core.windows.net/b88b632a-eedc-4c89-b85e-5aa3362e4b3e/cdf4bdc3-3588-4bcb-b5ad-12b24c9529cd.png\",\n      \"position\": \"FL\"\n    },\n    {\n      \"imageid\": \"264dbcf6-163b-47c2-8665-d93e46f6ssss\",\n      \"image\": \"base64string\",\n      \"imageuri\":  \"https://stsmartsolwebclientnopro.blob.core.windows.net/b88b632a-eedc-4c89-b85e-5aa3362e4b3e/cdf4bdc3-3588-4bcb-b5ad-12b24c9529cd.png\",\n      \"position\": \"FR\"\n    },\n    {\n      \"imageid\": \"264dbcf6-163b-47c2-8665-d93e46fsssss\",\n      \"image\": \"base64string\",\n      \"imageuri\":  \"https://stsmartsolwebclientnopro.blob.core.windows.net/b88b632a-eedc-4c89-b85e-5aa3362e4b3e/cdf4bdc3-3588-4bcb-b5ad-12b24c9529cd.png\",\n      \"position\": \"FC\"\n    }\n  ]\n}");
+Request request = new Request.Builder()
+  .url("127.0.0.1:2000/api/v2/job")
+  .method("POST", body)
+  .addHeader("tenantname", "BCA")
+  .addHeader("streamid", "01")
+  .addHeader("Content-Type", "application/json")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```shell
+{
+  "callbackURL": "http://127.0.0.1:5000/test",
+  "images": [
+    {
+      "imageid": "264dbcf6-163b-47c2-8665-d93e46f65sss",
+      "image": "base64string",
+      "imageuri":  "https://stsmartsolwebclientnopro.blob.core.windows.net/b88b632a-eedc-4c89-b85e-5aa3362e4b3e/cdf4bdc3-3588-4bcb-b5ad-12b24c9529cd.png",
+      "position": "FL"
+    },
+    {
+      "imageid": "264dbcf6-163b-47c2-8665-d93e46f6ssss",
+      "image": "base64string",
+      "imageuri":  "https://stsmartsolwebclientnopro.blob.core.windows.net/b88b632a-eedc-4c89-b85e-5aa3362e4b3e/cdf4bdc3-3588-4bcb-b5ad-12b24c9529cd.png",
+      "position": "FR"
+    },
+    {
+      "imageid": "264dbcf6-163b-47c2-8665-d93e46fsssss",
+      "image": "base64string",
+      "imageuri":  "https://stsmartsolwebclientnopro.blob.core.windows.net/b88b632a-eedc-4c89-b85e-5aa3362e4b3e/cdf4bdc3-3588-4bcb-b5ad-12b24c9529cd.png",
+      "position": "FC"
+    }
+  ]
+}
+```
+
+
+
 ```python 
 import requests
 url = "127.0.0.1:2000/api/v2/job"
@@ -43,6 +86,8 @@ axios(config)
     "requestUid": "89aec8e0-d8bb-4b56-bf85-b4986b0b2fd7"
 }
 ``` 
+
+
 ###Request Information 
 |Category|Value|
 |--------|-----|
@@ -62,6 +107,47 @@ axios(config)
 |callbackURL|http://127.0.0.1:5000/test|
 
 ##Job Results api Request
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n  \"callbackURL\": \"http://127.0.0.1:5000/test\",\n  \"images\": [\n    {\n      \"imageid\": \"264dbcf6-163b-47c2-8665-d93e46f65sss\",\n      \"image\": \"base64string\",\n      \"imageuri\":  \"https://stsmartsolwebclientnopro.blob.core.windows.net/b88b632a-eedc-4c89-b85e-5aa3362e4b3e/cdf4bdc3-3588-4bcb-b5ad-12b24c9529cd.png\",\n      \"position\": \"FL\"\n    },\n    {\n      \"imageid\": \"264dbcf6-163b-47c2-8665-d93e46f6ssss\",\n      \"image\": \"base64string\",\n      \"imageuri\":  \"https://stsmartsolwebclientnopro.blob.core.windows.net/b88b632a-eedc-4c89-b85e-5aa3362e4b3e/cdf4bdc3-3588-4bcb-b5ad-12b24c9529cd.png\",\n      \"position\": \"FR\"\n    },\n    {\n      \"imageid\": \"264dbcf6-163b-47c2-8665-d93e46fsssss\",\n      \"image\": \"base64string\",\n      \"imageuri\":  \"https://stsmartsolwebclientnopro.blob.core.windows.net/b88b632a-eedc-4c89-b85e-5aa3362e4b3e/cdf4bdc3-3588-4bcb-b5ad-12b24c9529cd.png\",\n      \"position\": \"FC\"\n    }\n  ]\n}");
+Request request = new Request.Builder()
+  .url("127.0.0.1:2000/api/v2/results")
+  .method("POST", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("consolidatedBy", "Part")
+  .addHeader("Jobid", "d2b938fa-a15d-4cf5-9e5b-eea0df57ab4f")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```shell
+{
+  "callbackURL": "http://127.0.0.1:5000/test",
+  "images": [
+    {
+      "imageid": "264dbcf6-163b-47c2-8665-d93e46f65sss",
+      "image": "base64string",
+      "imageuri":  "https://stsmartsolwebclientnopro.blob.core.windows.net/b88b632a-eedc-4c89-b85e-5aa3362e4b3e/cdf4bdc3-3588-4bcb-b5ad-12b24c9529cd.png",
+      "position": "FL"
+    },
+    {
+      "imageid": "264dbcf6-163b-47c2-8665-d93e46f6ssss",
+      "image": "base64string",
+      "imageuri":  "https://stsmartsolwebclientnopro.blob.core.windows.net/b88b632a-eedc-4c89-b85e-5aa3362e4b3e/cdf4bdc3-3588-4bcb-b5ad-12b24c9529cd.png",
+      "position": "FR"
+    },
+    {
+      "imageid": "264dbcf6-163b-47c2-8665-d93e46fsssss",
+      "image": "base64string",
+      "imageuri":  "https://stsmartsolwebclientnopro.blob.core.windows.net/b88b632a-eedc-4c89-b85e-5aa3362e4b3e/cdf4bdc3-3588-4bcb-b5ad-12b24c9529cd.png",
+      "position": "FC"
+    }
+  ]
+}
+```
 
 ```python 
 import requests
